@@ -34,19 +34,19 @@ function App() {
   };
 
 
-  const handleCaptureButtonClick = () => {
+  const handleCapturePokemon = () => {
     if (pokemons.length > MAX_CAPTURED_POKEMONS_NUM) {
       return;
     }
     setPokemons((prevPokemons) => {
       return [...prevPokemons, pokemon];
     });
+    inputRef.current.value = '';
   };
 
 
-  const handleInputSearchClick = () => {
+  const handleSearchPokemon = () => {
     const query = inputRef.current.value;
-  
     if (!query || query.trim() === '') {
       return;
     }
@@ -83,7 +83,7 @@ function App() {
                 ref={inputRef}
               />
               <Button
-                onClick={handleInputSearchClick} 
+                onClick={handleSearchPokemon} 
                 borderWidth={4} borderColor='red.800'>
                 Search
               </Button>
@@ -136,7 +136,7 @@ function App() {
                 <Box>
                   <Button
                     isDisabled={isCaptureButtonDisabled}
-                    onClick={handleCaptureButtonClick} 
+                    onClick={handleCapturePokemon} 
                     w='full' borderWidth={4} borderColor='red.800'>
                     Capture
                   </Button>
