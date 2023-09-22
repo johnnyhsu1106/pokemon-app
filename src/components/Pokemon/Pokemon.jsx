@@ -1,8 +1,4 @@
-import { 
-  Stack, 
-  Text 
-} from '@chakra-ui/react';
-
+import { Stack } from '@chakra-ui/react';
 import PokemonImage from './PokemonImage';
 import PokemonName from './PokemonName';
 import PokemonOrder from './PokemonOrder';
