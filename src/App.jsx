@@ -41,7 +41,6 @@ function App() {
     setPokemons((prevPokemons) => {
       return [...prevPokemons, pokemon];
     });
-    inputRef.current.value = '';
   };
 
 
