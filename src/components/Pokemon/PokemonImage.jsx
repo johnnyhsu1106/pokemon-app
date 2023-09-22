@@ -4,9 +4,9 @@ import {
 } from '@chakra-ui/react';
 
 const PokemonImage = ({ image }) => {
-  // if (!image) {
-  //   return null;
-  // }
+  if (!image) {
+    return null;
+  }
 
   return (
   <Box>

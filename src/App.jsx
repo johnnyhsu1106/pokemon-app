@@ -71,11 +71,11 @@ function App() {
       <Box w='full' maxWidth='600px'>
         <Stack direction='row' spacing={5} minHeight='500px'>
           <Stack
-            borderWidth={6}
+            borderWidth={3}
             rounded='xl'
-            borderColor='red.800'
+            borderColor='white'
             p={4}
-            bg='#CE302A'
+            bg='#222'
           >
             <SearchBar onClickSearchButton={handleSearchPokemon} />
             <Pokemon
@@ -89,12 +89,12 @@ function App() {
 
           <Stack
             minWidth='150px'
-            borderWidth={6}
+            borderWidth={3}
             rounded='xl'
-            borderColor='red.800'
-            p={4}
-            bg='#CE302A'
-            spacing={1}
+            borderColor='white'
+            p={3}
+            bg='#222'
+            spacing={3}
             pos='relative'
             left='-4px'
           >

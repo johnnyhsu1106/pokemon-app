@@ -20,7 +20,7 @@ const SearchBar = ({
     <HStack>
       <Input
         borderWidth={4}
-        borderColor='red.800'
+        borderColor='white'
         bg='white'
         placeholder='name or id'
         value={query}
@@ -28,7 +28,8 @@ const SearchBar = ({
       />
       <Button
         onClick={ handleSearchButtonClick } 
-        borderWidth={4} borderColor='red.800'>
+        borderWidth={4} borderColor='white'
+      >
         Search
       </Button>
   </HStack>
