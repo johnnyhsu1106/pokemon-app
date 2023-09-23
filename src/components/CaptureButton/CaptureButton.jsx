@@ -7,15 +7,15 @@ const CaptureButton = ({
   isCaptureButtonDisabled,
   onClickCaptureButton
 }) => {
-  
+
   return (
     <Box>
       <Button
         isDisabled={isCaptureButtonDisabled}
         onClick={onClickCaptureButton} 
-        w='full' 
         borderWidth={4} 
         borderColor='#333'
+        rounded={10}
       >
         Capture
       </Button>

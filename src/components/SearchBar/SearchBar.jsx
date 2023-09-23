@@ -35,6 +35,7 @@ const SearchBar = ({
           />
         </FormControl>
         <Button
+          rounded={10}
           type='submit'
           ml={3}
           borderWidth={4} 

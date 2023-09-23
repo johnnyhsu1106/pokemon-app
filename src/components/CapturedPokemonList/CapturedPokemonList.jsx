@@ -11,7 +11,7 @@ const CapturedPokemonList = ({
 }) => {
   return (
     <Box rounded='lg'>
-      <Text color='white' fontSize='xl' fontWeight={600}>Captured</Text>
+      <Text color='white' fontSize='xl' fontWeight={600}>Pocket</Text>
       <Text color='white' fontSize='sm' fontWeight={300}>Max 5</Text>
     
       { capturedPokemons.map((capturedPokemon, i) => {
