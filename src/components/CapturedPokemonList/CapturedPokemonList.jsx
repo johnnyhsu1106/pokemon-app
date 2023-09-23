@@ -14,6 +14,7 @@ const CapturedPokemonList = ({
       { capturedPokemons.map((capturedPokemon, i) => {
         return (
           <Image
+            m='auto'
             className='captured-pokemon'
             onClick={() => { removeCapturedPokemon(i) }} 
             key={i} 

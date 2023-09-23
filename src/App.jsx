@@ -93,7 +93,9 @@ function App() {
               />
           </Flex>
 
-          <Stack
+          <Flex
+            flexDirection='column'
+            alignItems='center'
             minHeight='560px'
             minWidth='150px'
             borderWidth={3}
@@ -109,7 +111,7 @@ function App() {
               removeCapturedPokemon={handlePokemonRemove} 
               capturedPokemons={capturedPokemons} 
             />
-          </Stack>
+          </Flex>
         </Stack>
       </Box>
     </Center>
