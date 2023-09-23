@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   Box,
   Stack,
-  Center
+  Center,
+  Flex
 } from '@chakra-ui/react';
 
 import SearchBar from './components/SearchBar/SearchBar';
@@ -11,7 +12,7 @@ import CaptureButton from './components/CaptureButton/CaptureButton';
 import CapturedPokemonList from './components/CapturedPokemonList/CapturedPokemonList';
 import './App.css'
 
-const MAX_CAPTURED_POKEMONS_NUM = 6;
+const MAX_CAPTURED_POKEMONS_NUM = 5;
 
 
 function App() {
@@ -19,10 +20,15 @@ function App() {
   const [capturedPokemons, setCapturedPokemons] = useState([]);
 
   const isCaptureButtonDisabled = capturedPokemons.length >= MAX_CAPTURED_POKEMONS_NUM;
+  
+  useEffect(() => {
+    fetchPokemon(1);
+  }, []);
 
   const fetchPokemon = async (query) => {
     try {
-      const req = await fetch(`https://pokeapi.co/api/v2/pokemon/${query}`);  
+      const req = await fetch(`https://pokeapi.co/api/v2/pokemon/${query}`); 
+
       const data = await req.json();
 
       setPokemon({
@@ -34,7 +40,7 @@ function App() {
       });
       
     } catch (err) {
-      console.error(err);
+      console.log('err ', err.message);
     }
   };
 
@@ -69,25 +75,26 @@ function App() {
   return (
     <Center h='100vh'>
       <Box w='full' maxWidth='600px'>
-        <Stack direction='row' spacing={5} minHeight='500px'>
-          <Stack
+        <Stack direction='row' spacing={5}>
+          <Flex
+            flexDirection='column'
+            alignItems='center'
             borderWidth={3}
             rounded='xl'
             borderColor='white'
             p={4}
             bg='#222'
           >
-            <SearchBar onClickSearchButton={handleSearchPokemon} />
-            <Pokemon
-              pokemon={pokemon} 
-            />
+            <SearchBar onSubmitSearchForm={handleSearchPokemon} />
+            <Pokemon pokemon={pokemon} />
             <CaptureButton
-              isCaptureButtonDisabled={isCaptureButtonDisabled}
-              onClickCaptureButton={handleCapturePokemon}
-            />
-          </Stack>
+                isCaptureButtonDisabled={isCaptureButtonDisabled}
+                onClickCaptureButton={handleCapturePokemon}
+              />
+          </Flex>
 
           <Stack
+            minHeight='560px'
             minWidth='150px'
             borderWidth={3}
             rounded='xl'

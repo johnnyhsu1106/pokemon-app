@@ -6,26 +6,31 @@ import PokemonTypes from './PokemonTypes';
 import PokemonStatsList from './PokemonStatsList';
 
 const Pokemon = ({
-  pokemon
+  pokemon, 
+  error
 }) => {
   const {
     name,
     order,
     image,
     types,
-    stats
+    stats,
   } = pokemon;
 
+  if (error) {
+    return <h1>{error}</h1>;
+  }
+
   return ( 
-    <Stack direction='row' spacing={4} minHeight='500px'>
+    <>
       <PokemonImage image={image} />
-      <Stack>
+      <Stack mb={5}>
         <PokemonName name={name} />
         <PokemonOrder order={order} />
         <PokemonTypes types={types} />
         <PokemonStatsList stats={stats} />
       </Stack>
-    </Stack>
+    </>
   )
 }
 

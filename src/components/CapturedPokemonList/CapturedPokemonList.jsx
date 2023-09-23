@@ -1,6 +1,7 @@
 import { 
   Box,
-  Image 
+  Image,
+  Text 
 } from '@chakra-ui/react';
 
 const CapturedPokemonList = ({
@@ -8,10 +9,12 @@ const CapturedPokemonList = ({
   removeCapturedPokemon
 }) => {
   return (
-    <Box bg='gray.100' rounded='lg'>
+    <Box rounded='lg'>
+      <Text color='white' fontSize='xl' fontWeight={600}>Captured</Text>
       { capturedPokemons.map((capturedPokemon, i) => {
         return (
           <Image
+            className='captured-pokemon'
             onClick={() => { removeCapturedPokemon(i) }} 
             key={i} 
             src={capturedPokemon?.image}/>  
