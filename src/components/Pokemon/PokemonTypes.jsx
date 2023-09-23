@@ -3,7 +3,8 @@ import {
   Badge,
   WrapItem,
   Wrap,
-  Text
+  Text,
+  Stack
 } from '@chakra-ui/react';
 
 
@@ -13,7 +14,7 @@ const PokemonTypes = ({ types }) => {
   }
 
   return (
-    <>
+    <Stack pb={3}>
       <Text color='white'>Type</Text>
       <Box>
         <Wrap>
@@ -28,7 +29,7 @@ const PokemonTypes = ({ types }) => {
           </WrapItem>
         </Wrap>
       </Box>
-    </>
+    </Stack>
   )
 }
 

@@ -23,7 +23,11 @@
   display: flex;
 }
 
-.captured-pokemon {
+.delete-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: white;
   cursor: pointer;
 }
 

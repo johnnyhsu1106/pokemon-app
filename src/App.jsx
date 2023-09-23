@@ -74,7 +74,7 @@ function App() {
 
   return (
     <Center h='100vh'>
-      <Box w='full' maxWidth='600px'>
+      <Box w='full' maxWidth='700px'>
         <Stack direction='row' spacing={5}>
           <Flex
             flexDirection='column'
@@ -96,7 +96,7 @@ function App() {
           <Flex
             flexDirection='column'
             alignItems='center'
-            minHeight='560px'
+            minHeight='580px'
             minWidth='150px'
             borderWidth={3}
             rounded='xl'

@@ -1,7 +1,8 @@
 import { 
   Box,
   Image,
-  Text 
+  Text,
+  WrapItem
 } from '@chakra-ui/react';
 
 const CapturedPokemonList = ({
@@ -11,14 +12,24 @@ const CapturedPokemonList = ({
   return (
     <Box rounded='lg'>
       <Text color='white' fontSize='xl' fontWeight={600}>Captured</Text>
+      <Text color='white' fontSize='sm' fontWeight={300}>Max 5</Text>
+    
       { capturedPokemons.map((capturedPokemon, i) => {
         return (
-          <Image
-            m='auto'
-            className='captured-pokemon'
-            onClick={() => { removeCapturedPokemon(i) }} 
-            key={i} 
-            src={capturedPokemon?.image}/>  
+          <WrapItem
+            key={i}  
+            position='relative'>
+            <Image
+              m='auto'
+              className='captured-pokemon'
+              src={capturedPokemon?.image}/>
+            <div
+              onClick={() => { removeCapturedPokemon(i) }}  
+              className='delete-btn'>
+                &times;
+            </div>
+              
+          </WrapItem>
         )}
       )}
     </Box>

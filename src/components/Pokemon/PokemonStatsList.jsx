@@ -6,8 +6,8 @@ const STATS_NAMES = [
   'Hp', 
   'Attack', 
   'Defense', 
-  'Special-attack', 
-  'Special-defense', 
+  'Sp Attack', 
+  'Sp Defense', 
   'Speed'
 ];
 
@@ -20,9 +20,9 @@ const PokemonStatsList = ({ stats }) => {
     <HStack color='white'>
       {
         STATS_NAMES.map((STATS_NAME, i) => {
-          if (i === 3 || i === 4) {
-           return null;
-          }
+          // if (i === 3 || i === 4) {
+          //  return null;
+          // }
           return (
             <PokemonStats 
               key={i} 
