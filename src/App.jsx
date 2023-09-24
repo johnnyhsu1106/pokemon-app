@@ -74,8 +74,8 @@ function App() {
 
   return (
     <Center h='100vh'>
-      <Box w='full' maxWidth='700px'>
-        <Stack direction='row' spacing={5}>
+      <Box w='full'>
+        <Stack direction='row' spacing={5} justifyContent='center'>
           <Flex
             flexDirection='column'
             alignItems='center'
