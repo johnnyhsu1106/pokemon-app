@@ -32,15 +32,15 @@ function App() {
       const data = await req.json();
 
       setPokemon({
-        order: data?.order,
+        image: data?.sprites?.front_default,
         name: data?.name,
+        order: data?.order,
         types: data?.types,
-        stats: data?.stats,
-        image: data?.sprites?.front_default
+        stats: data?.stats
       });
       
     } catch (err) {
-      console.log('err ', err.message);
+      console.error(err);
     }
   };
 
@@ -86,7 +86,7 @@ function App() {
             bg='#222'
           >
             <SearchBar onSubmitSearchForm={handleSearchPokemon} />
-            <Pokemon pokemon={pokemon} />
+            <Pokemon {...pokemon} />
             <CaptureButton
                 isCaptureButtonDisabled={isCaptureButtonDisabled}
                 onClickCaptureButton={handleCapturePokemon}

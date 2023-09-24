@@ -5,22 +5,13 @@ import PokemonOrder from './PokemonOrder';
 import PokemonTypes from './PokemonTypes';
 import PokemonStatsList from './PokemonStatsList';
 
-const Pokemon = ({
-  pokemon, 
-  error
+const Pokemon = ({  
+  image,
+  name,
+  order,
+  types,
+  stats,
 }) => {
-  const {
-    name,
-    order,
-    image,
-    types,
-    stats,
-  } = pokemon;
-
-  if (error) {
-    return <h1>{error}</h1>;
-  }
-
   return ( 
     <>
       <PokemonImage image={image} />
