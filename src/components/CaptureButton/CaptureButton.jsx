@@ -4,15 +4,15 @@ import {
 } from '@chakra-ui/react';
 
 const CaptureButton = ({
-  isCaptureButtonDisabled,
-  onClickCaptureButton
+  isDisabled,
+  onClick
 }) => {
 
   return (
     <Box>
       <Button
-        isDisabled={isCaptureButtonDisabled}
-        onClick={onClickCaptureButton} 
+        isDisabled={isDisabled}
+        onClick={onClick} 
         borderWidth={4} 
         borderColor='#333'
         rounded={10}

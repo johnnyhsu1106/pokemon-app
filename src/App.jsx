@@ -88,8 +88,8 @@ function App() {
             <SearchBar onSubmitSearchForm={handleSearchPokemon} />
             <Pokemon {...pokemon} />
             <CaptureButton
-                isCaptureButtonDisabled={isCaptureButtonDisabled}
-                onClickCaptureButton={handleCapturePokemon}
+                isDisabled={isCaptureButtonDisabled}
+                onClick={handleCapturePokemon}
               />
           </Flex>
 
