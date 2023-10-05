@@ -51,7 +51,6 @@ function App() {
     }
 
     setCapturedPokemons((prevCapturedPokemons) => {
-      console.log([...prevCapturedPokemons, {...pokemon, id: uuidv4()}]);
       return [...prevCapturedPokemons, {...pokemon, id: uuidv4()}];
     });
   };
