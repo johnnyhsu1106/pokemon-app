@@ -5,7 +5,7 @@ import {
   Center,
   Flex
 } from '@chakra-ui/react';
-
+import { v4 as uuidv4 } from 'uuid';
 import SearchBar from './components/SearchBar/SearchBar';
 import Pokemon from './components/Pokemon/Pokemon';
 import CaptureButton from './components/CaptureButton/CaptureButton';
@@ -51,7 +51,8 @@ function App() {
     }
 
     setCapturedPokemons((prevCapturedPokemons) => {
-      return [...prevCapturedPokemons, pokemon];
+      console.log([...prevCapturedPokemons, {...pokemon, id: uuidv4()}]);
+      return [...prevCapturedPokemons, {...pokemon, id: uuidv4()}];
     });
   };
 
@@ -64,10 +65,10 @@ function App() {
     fetchPokemon(query);
   };
   
-  const handlePokemonRemove = (targetIndex) => {
+  const handlePokemonRemove = (id) => {
     setCapturedPokemons((prevCapturedPokemons) => {
-      return prevCapturedPokemons.filter((_, index) => {
-        return index !== targetIndex;
+      return prevCapturedPokemons.filter((prevCapturedPokemon) => {
+        return prevCapturedPokemon.id !== id;
       })
     });
   };

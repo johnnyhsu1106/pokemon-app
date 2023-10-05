@@ -14,17 +14,18 @@ const CapturedPokemonList = ({
       <Text color='white' fontSize='xl' fontWeight={600}>Pocket</Text>
       <Text color='white' fontSize='sm' fontWeight={300}>Max 5</Text>
     
-      { capturedPokemons.map((capturedPokemon, i) => {
+      { capturedPokemons.map((capturedPokemon) => {
+        const { id } = capturedPokemon;
         return (
           <WrapItem
-            key={i}  
+            key={id}  
             position='relative'>
             <Image
               m='auto'
               className='captured-pokemon'
               src={capturedPokemon?.image}/>
             <div
-              onClick={() => { removeCapturedPokemon(i) }}  
+              onClick={() => { removeCapturedPokemon(id) }}  
               className='delete-btn'>
                 &times;
             </div>
