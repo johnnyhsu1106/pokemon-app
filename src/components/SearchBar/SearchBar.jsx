@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import {
   Button,
   HStack,
@@ -10,12 +10,12 @@ import {
 const SearchBar = ({
   onSubmitSearchForm
 }) => {
-  const [query, setQuery] = useState('');
+  const inputRef = useRef(null);
 
   const handleSearchButtonClick = (e) => {
     e.preventDefault();
-    onSubmitSearchForm(query);
-    setQuery('');
+    onSubmitSearchForm(inputRef.current.value);
+    inputRef.current.value = '';
   };
 
   return (
@@ -30,8 +30,7 @@ const SearchBar = ({
             borderColor='white'
             bg='white'
             placeholder='name or id'
-            value={query}
-            onChange={(e) => {setQuery(e.target.value)}}
+            ref={inputRef}
           />
         </FormControl>
         <Button
