@@ -20,9 +20,6 @@ const PokemonStatsList = ({ stats }) => {
     <HStack color='white'>
       {
         STATS_NAMES.map((STATS_NAME, i) => {
-          // if (i === 3 || i === 4) {
-          //  return null;
-          // }
           return (
             <PokemonStats 
               key={i} 
