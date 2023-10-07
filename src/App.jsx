@@ -15,7 +15,7 @@ import './App.css'
 const MAX_CAPTURED_POKEMONS_NUM = 5;
 
 
-function App() {
+const App = () => {
   const [pokemon, setPokemon] = useState({});
   const [capturedPokemons, setCapturedPokemons] = useState([]);
 
