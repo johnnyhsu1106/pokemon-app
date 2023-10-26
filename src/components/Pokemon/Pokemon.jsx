@@ -4,14 +4,17 @@ import PokemonName from './PokemonName';
 import PokemonOrder from './PokemonOrder';
 import PokemonTypes from './PokemonTypes';
 import PokemonStatsList from './PokemonStatsList';
+import { usePokemonContext } from '../../context/PokemonContext';
 
-const Pokemon = ({  
-  image,
-  name,
-  order,
-  types,
-  stats,
-}) => {
+const Pokemon = () => {
+  const { pokemon } = usePokemonContext();
+  const {
+    image,
+    name,
+    order,
+    types,
+    stats,
+  } = pokemon;
   return ( 
     <>
       <PokemonImage image={image} />

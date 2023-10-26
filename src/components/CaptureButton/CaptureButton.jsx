@@ -1,18 +1,19 @@
-import { 
-  Box,
-  Button 
-} from '@chakra-ui/react';
+import { Box, Button } from '@chakra-ui/react';
+import { usePokemonContext } from '../../context/PokemonContext';
 
-const CaptureButton = ({
-  isDisabled,
-  onClick
-}) => {
+
+const CaptureButton = () => {
+  const {
+    isCaptureButtonDisabled,
+    handleCapturePokemon
+  } = usePokemonContext();
+
 
   return (
     <Box>
       <Button
-        isDisabled={isDisabled}
-        onClick={onClick} 
+        isDisabled={isCaptureButtonDisabled}
+        onClick={handleCapturePokemon} 
         borderWidth={4} 
         borderColor='#333'
         rounded={10}
