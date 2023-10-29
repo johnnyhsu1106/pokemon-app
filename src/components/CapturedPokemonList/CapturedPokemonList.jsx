@@ -1,21 +1,20 @@
-import { Box, Text } from '@chakra-ui/react';
+import { Stack } from 'react-bootstrap';
 import CapturedPokemon from './CapturedPokemon';
 import { usePokemonContext } from '../../context/PokemonContext';
 
 
 const CapturedPokemonList = () => {
-  const { capturedPokemons } = usePokemonContext();
+  const { capturedPokemons,  MAX_CAPTURED_POKEMONS_NUM } = usePokemonContext();
   return (
-    <Box rounded='lg'>
-      <Text color='white' fontSize='xl' fontWeight={600}>Pocket</Text>
-      <Text color='white' fontSize='sm' fontWeight={300}>Max 5</Text>
-    
+    <Stack className='d-flex flex-column align-items-center' gap={2}>
+      <h3>Pocket</h3>
+      <p>Max {MAX_CAPTURED_POKEMONS_NUM} </p>
       { capturedPokemons.map((capturedPokemon) => {
         return (
-          <CapturedPokemon key={capturedPokemon.id} capturedPokemon={capturedPokemon} />
+          <CapturedPokemon key={capturedPokemon.capturedId} capturedPokemon={capturedPokemon} />
         )}
       )}
-    </Box>
+    </Stack>
   )
 }
 

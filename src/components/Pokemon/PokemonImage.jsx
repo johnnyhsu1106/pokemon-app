@@ -1,7 +1,4 @@
-import {
-  Box,
-  Image,
-} from '@chakra-ui/react';
+import { Image } from 'react-bootstrap';
 
 const PokemonImage = ({ image }) => {
   if (!image) {
@@ -9,12 +6,8 @@ const PokemonImage = ({ image }) => {
   }
 
   return (
-  <Box>
-    <Box bg='gray.100' rounded='lg'>
-      {image && <Image src={image}/>}
-    </Box>
-  </Box>
+    image ? <Image src={image}/> : null
   )
 }
 
-export default PokemonImage
+export default PokemonImage;

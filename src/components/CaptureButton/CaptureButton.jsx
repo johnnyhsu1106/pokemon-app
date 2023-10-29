@@ -1,26 +1,22 @@
-import { Box, Button } from '@chakra-ui/react';
+import { Button } from 'react-bootstrap';
 import { usePokemonContext } from '../../context/PokemonContext';
 
 
 const CaptureButton = () => {
   const {
     isCaptureButtonDisabled,
-    handleCapturePokemon
+    handlePokemonCapture
   } = usePokemonContext();
 
-
   return (
-    <Box>
       <Button
-        isDisabled={isCaptureButtonDisabled}
-        onClick={handleCapturePokemon} 
-        borderWidth={4} 
-        borderColor='#333'
-        rounded={10}
+        className='w-100 mt-3'
+        variant='success'
+        disabled={isCaptureButtonDisabled}
+        onClick={handlePokemonCapture} 
       >
         Capture
       </Button>
-    </Box>
   )
 }
 

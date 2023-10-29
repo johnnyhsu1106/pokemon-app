@@ -1,7 +1,4 @@
-import {
-  Stack,
-  Text,
-} from '@chakra-ui/react';
+import { Badge, Stack } from 'react-bootstrap';
 
 
 const PokemonStats = ({
@@ -10,11 +7,11 @@ const PokemonStats = ({
 }) => {
 
   return (
-    <Stack>
-      <Text>{name}</Text>
-      <Text>{baseStats}</Text>
+    <Stack direction='vertical' gap={1} className='text-center'>
+      <Badge pill bg="light" text="dark">{name}</Badge>
+      <p>{baseStats}</p>
     </Stack>
   )
 }
 
-export default PokemonStats
+export default PokemonStats;

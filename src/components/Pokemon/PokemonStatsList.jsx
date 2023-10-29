@@ -1,4 +1,4 @@
-import { HStack } from '@chakra-ui/react';
+import { Stack } from 'react-bootstrap';
 import PokemonStats from './PokemonStats';
 
 
@@ -17,18 +17,18 @@ const PokemonStatsList = ({ stats }) => {
   }
   
   return (
-    <HStack color='white'>
+    <Stack direction='horizontal' gap={3}>
       {
-        STATS_NAMES.map((STATS_NAME, i) => {
-          return (
-            <PokemonStats 
-              key={i} 
-              name={STATS_NAME} 
-              baseStats={ stats[i].base_stat} />
-          )
-        })
-      }
-    </HStack>
+      STATS_NAMES.map((STATS_NAME, i) => {
+        return (
+          <PokemonStats 
+            key={i} 
+            name={STATS_NAME} 
+            baseStats={ stats[i].base_stat} 
+          />
+      )})
+    }
+    </Stack>
   )
 }
 

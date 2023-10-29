@@ -1,23 +1,27 @@
-import { Image, WrapItem } from '@chakra-ui/react';
+import { Image } from 'react-bootstrap';
 import { usePokemonContext } from '../../context/PokemonContext';
 
 
 const CapturedPokemon = ({ capturedPokemon} ) => {
-  const { handlePokemonRemove } = usePokemonContext();
+  const { 
+    handlePokemonRemove,
+    handlePokemonInspect
+   } = usePokemonContext();
 
   return (
-    <WrapItem
-      position='relative'>
+    <div className='captured-pokemon'>
       <Image
-        m='auto'
         className='captured-pokemon'
-        src={capturedPokemon.image}/>
-      <div
-        onClick={() => { handlePokemonRemove(capturedPokemon.id) }}  
-        className='delete-btn'>
-          &times;
-      </div>
-    </WrapItem>
+        src={capturedPokemon.thumbnail}
+        onClick={() => { handlePokemonInspect(capturedPokemon.id)}}
+      />
+      <button
+        onClick={() => { handlePokemonRemove(capturedPokemon.capturedId) }}  
+        className='delete-btn'
+        >
+        &times;
+      </button>
+    </div>
   )
 };
 

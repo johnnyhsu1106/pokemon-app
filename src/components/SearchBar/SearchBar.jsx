@@ -1,52 +1,44 @@
-import React, { useRef, useState } from 'react'
-import {
-  Button,
-  HStack,
-  Input,
-  FormControl
-} from '@chakra-ui/react';
+import React, { useRef } from 'react'
+import { Button, Form, Row } from 'react-bootstrap';
 import { usePokemonContext } from '../../context/PokemonContext';
 
 
 const SearchBar = () => {
-  const { handleSearchPokemon } = usePokemonContext();
+  const { handlePokemonSearch } = usePokemonContext();
   const inputRef = useRef(null);
 
   const handleSearchButtonClick = (e) => {
     e.preventDefault();
-    handleSearchPokemon(inputRef.current.value || '');
+    handlePokemonSearch(inputRef.current.value || '');
     if (inputRef.current) {
       inputRef.current.value = '';
     }
   };
 
   return (
-    <HStack mb={10}>
-      <form
-        className='search-form' 
+    <Row className='mb-3 w-100 mx-auto'>
+      <Form
+        className='d-flex justify-content-center' 
         onSubmit={handleSearchButtonClick}>
-        <FormControl>
-          <Input
+        <Form.Group className='mx-2'>
+          <Form.Label
+            hidden 
+            htmlFor='pokemon-input'> Search Pokemon </Form.Label>
+          <Form.Control
+            id='pokemon-input' 
             type='text'
-            borderWidth={4}
-            borderColor='white'
-            bg='white'
-            placeholder='name or id'
+            placeholder='Pokemon Name or ID'
+            aria-label='Pokemon Name or ID'
             ref={inputRef}
-          />
-        </FormControl>
-        <Button
-          rounded={10}
-          type='submit'
-          ml={3}
-          borderWidth={4} 
-          borderColor='white'
-        >
-          Search
-        </Button>
-
-      </form>
-  </HStack>
+            required
+          
+          />      
+        </Form.Group>
+          <Button variant='outline-light' type='submit'>
+            Search
+          </Button>
+      </Form>
+    </Row>
   )
 }
 
