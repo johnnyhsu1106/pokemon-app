@@ -1,16 +1,17 @@
 import { Button, Stack } from 'react-bootstrap';
 import PokemonCapturedItem from './PokemonCapturedItem';
 import { usePokemonContext } from '../../context/PokemonContext';
-import useViewport from '../../hooks/useViewport';
+import { useViewportContext } from '../../context/ViewportContext';
 
 
 const PokemonCapturedList = () => {
   const { 
-    isMobile,
     capturedPokemons,  
     MAX_CAPTURED_POKEMONS_NUM,
     handlePokemonsClear 
   } = usePokemonContext();
+
+  const { isMobile } = useViewportContext();
 
   if (isMobile) {
     return (

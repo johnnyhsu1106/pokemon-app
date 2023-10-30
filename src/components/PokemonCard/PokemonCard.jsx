@@ -2,17 +2,18 @@ import { Card, Button } from 'react-bootstrap';
 import PokemonTypes from './PokemonTypes';
 import PokemonStatsList from './PokemonStatsList';
 import { usePokemonContext } from '../../context/PokemonContext';
+import { useViewportContext } from '../../context/ViewportContext';
 
 
 const PokemonCard = () => {
-  const { 
-    isMobile,
+  const {
     isError,
     isCaptureButtonDisabled,
     pokemon,
     handlePokemonCapture
   } = usePokemonContext();
-
+  const { isMobile } = useViewportContext();
+  
   if (isError) {
     return (
       <p className='text-center'>Couldn't find this Pokemon</p>

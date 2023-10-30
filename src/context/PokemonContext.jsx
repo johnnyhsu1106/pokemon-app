@@ -16,7 +16,6 @@ const usePokemonContext = () => {
 }
 
 const PokemonProvider = ({ children }) => {
-  const width = useViewport();
   const [pokemonNames, setPokemonNames] = useState([]);
   const [currPageUrl, setCurrPageUrl] = useState(API_ENDPOINT_BASE);
   const [prevPageUrl, setPrevPageUrl] = useState('');
@@ -147,7 +146,6 @@ const PokemonProvider = ({ children }) => {
   };
 
   const value = {
-    isMobile: width <= 980,
     isError,
     pokemon,
     selectedPokemonName,

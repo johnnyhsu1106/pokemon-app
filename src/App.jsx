@@ -1,4 +1,5 @@
 import { Row, Col, Container } from 'react-bootstrap';
+import { ViewportProvider } from './context/ViewportContext';
 import { PokemonProvider } from './context/PokemonContext';
 import PokemonSearchBar from './components/PokemonSearchBar/PokemonSearchBar';
 import PokemonNavigation from './components/PokemonNavigation/PokemonNavigation';
@@ -14,17 +15,20 @@ const App = () => {
 
   if (width <= 980) {
     return (
-      <PokemonProvider>
-        <Container className='d-flex flex-column justify-content-center my-3 vh-100'>
-          <PokemonSearchBar />
-          <PokemonCard />
-          <PokemonCapturedList />
-        </Container>
-      </PokemonProvider>
+      <ViewportProvider>
+        <PokemonProvider>
+          <Container className='d-flex flex-column justify-content-center my-3 vh-100'>
+            <PokemonSearchBar />
+            <PokemonCard />
+            <PokemonCapturedList />
+          </Container>
+        </PokemonProvider>
+      </ViewportProvider>
     )
   }
 
   return (
+    <ViewportProvider>
       <PokemonProvider>
         <Container className='d-flex flex-column justify-content-center vh-100'>
           <PokemonSearchBar />
@@ -41,6 +45,7 @@ const App = () => {
           </Row>
         </Container>
       </PokemonProvider>
+    </ViewportProvider>
   )
 }
 
