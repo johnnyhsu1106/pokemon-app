@@ -12,7 +12,7 @@ const STATS_NAMES = [
 ];
 
 const PokemonStatsList = ({ stats }) => {
-  if (!stats) {
+  if (!stats || stats.length === 0) {
     return null;
   }
   
