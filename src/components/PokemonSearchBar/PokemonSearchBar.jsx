@@ -3,13 +3,13 @@ import { Button, Form, Row } from 'react-bootstrap';
 import { usePokemonContext } from '../../context/PokemonContext';
 
 
-const SearchBar = () => {
+const PokemonSearchBar = () => {
   const { handlePokemonSearch } = usePokemonContext();
   const inputRef = useRef(null);
 
   const handleSearchButtonClick = (e) => {
     e.preventDefault();
-    handlePokemonSearch(inputRef.current.value || '');
+    handlePokemonSearch(inputRef.current?.value || '');
     if (inputRef.current) {
       inputRef.current.value = '';
     }
@@ -42,4 +42,4 @@ const SearchBar = () => {
   )
 }
 
-export default SearchBar;
+export default PokemonSearchBar;

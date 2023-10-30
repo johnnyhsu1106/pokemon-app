@@ -5,7 +5,9 @@ const NavButton = ({
   onClick
 }) => {
   return (
-    <Button variant='outline-light' onClick={onClick}>{children}</Button> 
+    <Button
+      className='px-4' 
+      variant='light' onClick={onClick}>{children}</Button> 
   )
 }
 

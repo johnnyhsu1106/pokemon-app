@@ -15,36 +15,21 @@ const usePokemonContext = () => {
 }
 
 const PokemonProvider = ({ children }) => {
-  const [pokemonNameList, setPokemonNameList] = useState([]);
+  const [pokemonNames, setPokemonNames] = useState([]);
   const [currPageUrl, setCurrPageUrl] = useState(API_ENDPOINT_BASE);
   const [prevPageUrl, setPrevPageUrl] = useState('');
   const [nextPageUrl, setNextPageUrl] = useState('');
-  
-  const [pokemonName, setPokemonName] = useState('bulbasaur');
-  // const [isLoading, setIsLoading] = useState(false);
+  const [selectedPokemonName, setSelectedPokemonName] = useState('bulbasaur');
   const [isError, setIsError] = useState(false);
-
-  const [pokemon, setPokemon] = useState({
-    id: null,
-    name: null,
-    order: null,
-    image: null,
-    types: null,
-    stats: null
-  });
+  const [pokemon, setPokemon] = useState(null);
 
   const [capturedPokemons, setCapturedPokemons] = useState([]);
 
   const isCaptureButtonDisabled = capturedPokemons.length >= MAX_CAPTURED_POKEMONS_NUM || isError;
-  
 
   useEffect(() => {
-    console.log('pokemon' , pokemon);
-  },[pokemon]);
-
-  useEffect(() => {
-    fetchPokemon(pokemonName);
-  }, [pokemonName]);
+    fetchPokemon(selectedPokemonName);
+  }, [selectedPokemonName]);
 
 
   useEffect(() => {
@@ -56,7 +41,7 @@ const PokemonProvider = ({ children }) => {
           throw new Error('Invalid HTTP Status Code');
         }
         const data = await res.json();
-        setPokemonNameList(data?.results.map((result) => result.name));
+        setPokemonNames(data?.results.map((result) => result.name));
         setPrevPageUrl(data?.previous);
         setNextPageUrl(data?.next);
   
@@ -79,7 +64,7 @@ const PokemonProvider = ({ children }) => {
 
   const fetchPokemon = async (name) => {
     setIsError(false);
-    // setIsLoading(true);
+
     try {
       const req = await fetch(`${API_ENDPOINT_BASE}/${name}`); 
       if (!req.ok) {
@@ -103,8 +88,24 @@ const PokemonProvider = ({ children }) => {
     }
   };
 
+  const handlePokemonSearch = (name) => {
+    if (!name || name.trim() === '') {
+      return;
+    }
+
+    setSelectedPokemonName(name);
+  };
+
   const handlePokemonSelect = (name) => {
-    setPokemonName(name);
+    setSelectedPokemonName(name);
+  };
+
+  const handlePrevButtonClick = () => {
+    setCurrPageUrl(prevPageUrl);
+  };
+
+  const handleNextButtonClick = () => {
+    setCurrPageUrl(nextPageUrl);
   };
 
   const handlePokemonCapture = () => {
@@ -117,25 +118,21 @@ const PokemonProvider = ({ children }) => {
     });
   };
 
-  const handlePokemonSearch = (name) => {
-    if (!name || name.trim() === '') {
-      return;
-    }
-
-    setPokemonName(name);
-  };
 
   const handlePokemonInspect = (id) => {
     const capturedPokemon = capturedPokemons.find((capturedPokemon) => {
       return capturedPokemon.id === id;
     });
 
+    if (!capturedPokemon) {
+      return;
+    }
     const {capturedId, ...pokemon} = capturedPokemon
     setPokemon(pokemon);
+    setIsError(false);
   };
   
   const handlePokemonRemove = (capturedId) => {
-    console.log('remove pokemon id ', capturedId);
     setCapturedPokemons((prevCapturedPokemons) => {
       return prevCapturedPokemons.filter((prevCapturedPokemon) => {
         return prevCapturedPokemon.capturedId !== capturedId;
@@ -144,31 +141,29 @@ const PokemonProvider = ({ children }) => {
   };
 
 
-  const handlePrevButtonClick = () => {
-    setCurrPageUrl(prevPageUrl);
+  const handlePokemonsClear = () => {
+    setCapturedPokemons([]);  
   };
 
-  const handleNextButtonClick = () => {
-    setCurrPageUrl(nextPageUrl);
-  };
 
   const value = {
-    // isLoading,
     isError,
     pokemon,
-    pokemonNameList,
+    selectedPokemonName,
+    pokemonNames,
     prevPageUrl,
     nextPageUrl,
     capturedPokemons,
     isCaptureButtonDisabled,
     MAX_CAPTURED_POKEMONS_NUM,
-    handlePrevButtonClick,
-    handleNextButtonClick,
     handlePokemonSearch,
     handlePokemonSelect,
+    handlePrevButtonClick,
+    handleNextButtonClick,
     handlePokemonCapture,
+    handlePokemonInspect,
     handlePokemonRemove,
-    handlePokemonInspect
+    handlePokemonsClear
   };
 
   return (

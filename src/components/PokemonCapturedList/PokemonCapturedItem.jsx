@@ -1,28 +1,30 @@
-import { Image } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import { usePokemonContext } from '../../context/PokemonContext';
 
 
-const CapturedPokemon = ({ capturedPokemon} ) => {
+const PokemonCapturedItem = ({ capturedPokemon} ) => {
   const { 
     handlePokemonRemove,
     handlePokemonInspect
    } = usePokemonContext();
 
   return (
-    <div className='captured-pokemon'>
-      <Image
+    <Card className='captured-pokemon bg-dark text-white text-center'>
+      <Card.Img
         className='captured-pokemon'
         src={capturedPokemon.thumbnail}
         onClick={() => { handlePokemonInspect(capturedPokemon.id)}}
       />
+      <Card.Text className='mb-1'>{capturedPokemon.name}</Card.Text>
+
       <button
         onClick={() => { handlePokemonRemove(capturedPokemon.capturedId) }}  
         className='delete-btn'
         >
         &times;
       </button>
-    </div>
+    </Card>
   )
 };
 
-export default CapturedPokemon;
+export default PokemonCapturedItem;

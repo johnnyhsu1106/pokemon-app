@@ -1,11 +1,10 @@
-import { Row, Col, Container, Stack } from 'react-bootstrap';
-import PokemonNameList from './components/PokemonNameList/PokemonNameList';
-import NavButtons from './components/NavButtons/NavButtons';
-import SearchBar from './components/SearchBar/SearchBar';
-import Pokemon from './components/Pokemon/Pokemon';
-import CaptureButton from './components/CaptureButton/CaptureButton';
-import CapturedPokemonList from './components/CapturedPokemonList/CapturedPokemonList';
+import { Row, Col, Container } from 'react-bootstrap';
 import { PokemonProvider } from './context/PokemonContext';
+import PokemonSearchBar from './components/PokemonSearchBar/PokemonSearchBar';
+import PokemonNavigation from './components/PokemonNavigation/PokemonNavigation';
+import PokemonCard from './components/PokemonCard/PokemonCard';
+import PokemonCapturedList from './components/PokemonCapturedList/PokemonCapturedList';
+
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -13,21 +12,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const App = () => {
   return (
     <PokemonProvider>
-      <Container className='d-flex flex-column justify-content-center my-5'>
-        <SearchBar />
+      <Container className='d-flex flex-column justify-content-center vh-100'>
+        <PokemonSearchBar />
         <Row>
-          <Col className='d-flex justify-content-center align-items-stretch'>
-            <Stack gap={3}>
-              <PokemonNameList />
-              <NavButtons />
-            </Stack>
+          <Col>
+            <PokemonNavigation />
           </Col>  
-          <Col className=''>
-            <Pokemon />
-            <CaptureButton />
+          <Col className='d-flex flex-column justify-content-center'>
+            <PokemonCard />
           </Col>
-          <Col className=''>
-            <CapturedPokemonList />
+          <Col className='d-flex flex-column align-items-center'>
+            <PokemonCapturedList />
           </Col>
         </Row>
       </Container>

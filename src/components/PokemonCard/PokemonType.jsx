@@ -2,7 +2,7 @@ import { Badge } from 'react-bootstrap'
 
 const PokemonType = ({ type }) => {
   return (
-    <Badge>{type}</Badge>
+    <h5><Badge>{type}</Badge></h5>
   )
 }
 
