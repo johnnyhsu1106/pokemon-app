@@ -15,9 +15,21 @@ const PokemonCapturedList = () => {
   if (isMobile) {
     return (
       <>
-        <p className='mt-3 mb-0'>Pocket Max {MAX_CAPTURED_POKEMONS_NUM} </p>
         <Stack
-          className='my-3 flex-wrap align-items-center' 
+          className='mt-3 justify-content-end' 
+          direction='horizontal' 
+          gap={3}>
+          <p className='my-0'>Pocket Max {MAX_CAPTURED_POKEMONS_NUM} </p>
+          <Button
+            className='w-25' 
+            variant='outline-danger'
+            onClick={handlePokemonsClear}
+          >
+            Clear
+          </Button>
+        </Stack>
+        <Stack
+          className='mx-auto my-3 align-items-center' 
           direction='horizontal'
           gap={2}
         >
@@ -30,13 +42,7 @@ const PokemonCapturedList = () => {
           )}
         )}
         </Stack>
-        <Button
-          className='w-25 mx-auto' 
-          variant='outline-danger'
-          onClick={handlePokemonsClear}
-        >
-          Clear
-        </Button>
+
       </>
     )
   }
