@@ -17,7 +17,7 @@ const PokemonCapturedList = () => {
     return (
       <>
         <Stack
-          className='mt-3 justify-content-end' 
+          className='mt-3 justify-content-between' 
           direction='horizontal' 
           gap={3}>
           <p className='my-0'>Pocket Max {MAX_CAPTURED_POKEMONS_NUM} </p>
@@ -47,7 +47,6 @@ const PokemonCapturedList = () => {
       </>
     )
   }
-  
 
   return (
     <>

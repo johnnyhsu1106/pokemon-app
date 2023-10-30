@@ -1,6 +1,5 @@
 import { createContext, useContext, useState, useEffect} from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import useViewport from '../hooks/useViewport';
 
 const API_ENDPOINT_BASE = 'https://pokeapi.co/api/v2/pokemon';
 const MAX_CAPTURED_POKEMONS_NUM = 5;

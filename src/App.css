@@ -60,6 +60,6 @@ button.delete-btn {
 
   button.delete-btn {
     top: -5px;
-    right: -5px;
+    right: 0;
   }
 }
