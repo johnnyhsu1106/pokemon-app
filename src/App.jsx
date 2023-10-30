@@ -15,7 +15,7 @@ const App = () => {
   if (width <= 640) {
     return (
       <PokemonProvider>
-        <Container className='d-flex flex-column my-3'>
+        <Container className='d-flex flex-column justify-content-center my-3 vh-100'>
           <PokemonSearchBar />
           <PokemonCard />
           <PokemonCapturedList />
