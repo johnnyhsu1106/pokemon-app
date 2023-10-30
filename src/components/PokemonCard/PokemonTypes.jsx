@@ -7,7 +7,10 @@ const PokemonTypes = ({ types }) => {
   }
 
   return (
-    <Stack direction='horizontal' gap={3} className='mb-3'>
+    <Stack 
+      className='mb-3'
+      direction='horizontal' 
+      gap={3} >
       {types.map((item, i) => {  
         return (
           <PokemonType

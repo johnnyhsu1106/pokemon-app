@@ -4,6 +4,7 @@ import { usePokemonContext } from '../../context/PokemonContext';
 
 const PokemonCapturedItem = ({ capturedPokemon} ) => {
   const { 
+    isMobile,
     handlePokemonRemove,
     handlePokemonInspect
    } = usePokemonContext();
@@ -15,8 +16,8 @@ const PokemonCapturedItem = ({ capturedPokemon} ) => {
         src={capturedPokemon.thumbnail}
         onClick={() => { handlePokemonInspect(capturedPokemon.id)}}
       />
-      <Card.Text className='mb-1'>{capturedPokemon.name}</Card.Text>
-
+      {isMobile ? null : <Card.Text className='mb-1'>{capturedPokemon.name}</Card.Text>}
+      
       <button
         onClick={() => { handlePokemonRemove(capturedPokemon.capturedId) }}  
         className='delete-btn'

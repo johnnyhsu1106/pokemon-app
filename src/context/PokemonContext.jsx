@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect} from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import useViewport from '../hooks/useViewport';
 
 const API_ENDPOINT_BASE = 'https://pokeapi.co/api/v2/pokemon';
 const MAX_CAPTURED_POKEMONS_NUM = 5;
@@ -15,6 +16,7 @@ const usePokemonContext = () => {
 }
 
 const PokemonProvider = ({ children }) => {
+  const width = useViewport();
   const [pokemonNames, setPokemonNames] = useState([]);
   const [currPageUrl, setCurrPageUrl] = useState(API_ENDPOINT_BASE);
   const [prevPageUrl, setPrevPageUrl] = useState('');
@@ -140,13 +142,12 @@ const PokemonProvider = ({ children }) => {
     });
   };
 
-
   const handlePokemonsClear = () => {
     setCapturedPokemons([]);  
   };
 
-
   const value = {
+    isMobile: width <= 640,
     isError,
     pokemon,
     selectedPokemonName,
