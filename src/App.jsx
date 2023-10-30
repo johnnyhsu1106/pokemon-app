@@ -12,7 +12,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const App = () => {
   const width = useViewport();
 
-  if (width <= 640) {
+  if (width <= 980) {
     return (
       <PokemonProvider>
         <Container className='d-flex flex-column justify-content-center my-3 vh-100'>
