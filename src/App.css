@@ -48,6 +48,11 @@ button.delete-btn {
     font-size: 0.65rem;
   }
 
+  img.captured-pokemon {
+    width: 64px;
+    height: 64px;
+  }
+
   button.delete-btn {
     top: -5px;
     right: -5px;
