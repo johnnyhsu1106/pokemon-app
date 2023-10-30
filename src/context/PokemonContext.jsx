@@ -147,7 +147,7 @@ const PokemonProvider = ({ children }) => {
   };
 
   const value = {
-    isMobile: width <= 640,
+    isMobile: width <= 980,
     isError,
     pokemon,
     selectedPokemonName,
