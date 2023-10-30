@@ -34,7 +34,12 @@ button.delete-btn {
   border-radius: 50%;
   cursor:pointer;
 }
-
+@media screen and (max-width: 980px) {
+  button.delete-btn {
+    top: 0px;
+    right: -5px;
+  }
+} 
 @media screen and (max-width: 640px) {
   h5 .pokemon-type {
     font-size: 0.8rem;
