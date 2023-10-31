@@ -1,6 +1,6 @@
-import { createContext, useContext } from 'react'
-import useViewport from '../hooks/useViewport';
+import { createContext, useContext, useState, useEffect } from 'react'
 
+const BREAKPOINT = 980;
 const ViewportContext = createContext(null);
 
 const useViewportContext = () => {
@@ -11,13 +11,25 @@ const useViewportContext = () => {
   }
 
   return viewportContext;
-}
+};
 
 const ViewportProvider = ({ children }) => {
-  const width = useViewport();
-  
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    }
+  }, []);
+
   const value = {
-    isMobile: width <= 980
+    isMobile: width <= BREAKPOINT
   };
 
   return (
