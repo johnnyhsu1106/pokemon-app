@@ -13,6 +13,14 @@
   background-color: #fff;
 }
 
+.pokemon-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 600px !important;
+  min-height: 600px !important;
+}
+
 .captured-pokemon {
   position: relative;
   width: auto;
@@ -41,6 +49,11 @@ button.delete-btn {
   }
 } 
 @media screen and (max-width: 640px) {
+  .pokemon-card {
+    min-width: 100% !important;
+    min-height: 500px !important;
+  }
+
   h5 .pokemon-type {
     font-size: 0.8rem;
   }

@@ -17,18 +17,18 @@ const PokemonCard = () => {
   
   if (isLoading) {
     return (
-      <p className='text-center'>Search for pokemon...</p>
+      <p className='text-center pokemon-card'>Search for pokemon...</p>
     )
   };
   if (isError) {
     return (
-      <p className='text-center'>Couldn't find this Pokemon</p>
+      <p className='text-center pokemon-card'>Couldn't find this Pokemon</p>
     ) 
   };
 
 
   return ( 
-    <Card className='bg-dark text-white'>
+    <Card className='bg-dark text-white pokemon-card'>
       <Card.Img className='pokemon-image' variant='top' src={pokemon?.image} />
       <Card.Body>
         <Card.Title className='text-capitalize text-center'>{pokemon?.name || ''}</Card.Title>
