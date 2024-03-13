@@ -7,6 +7,7 @@ import { useViewportContext } from '../../context/ViewportContext';
 
 const PokemonCard = () => {
   const {
+    isLoading,
     isError,
     isCaptureButtonDisabled,
     pokemon,
@@ -14,6 +15,11 @@ const PokemonCard = () => {
   } = usePokemonContext();
   const { isMobile } = useViewportContext();
   
+  if (isLoading) {
+    return (
+      <p className='text-center'>Search for pokemon...</p>
+    )
+  };
   if (isError) {
     return (
       <p className='text-center'>Couldn't find this Pokemon</p>

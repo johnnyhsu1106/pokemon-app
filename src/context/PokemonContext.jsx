@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect} from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 const API_ENDPOINT_BASE = 'https://pokeapi.co/api/v2/pokemon';
@@ -20,6 +20,7 @@ const PokemonProvider = ({ children }) => {
   const [prevPageUrl, setPrevPageUrl] = useState('');
   const [nextPageUrl, setNextPageUrl] = useState('');
   const [selectedPokemonName, setSelectedPokemonName] = useState('bulbasaur');
+  const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [pokemon, setPokemon] = useState(null);
 
@@ -28,6 +29,35 @@ const PokemonProvider = ({ children }) => {
   const isCaptureButtonDisabled = capturedPokemons.length >= MAX_CAPTURED_POKEMONS_NUM || isError;
 
   useEffect(() => {
+    const fetchPokemon = async (name) => {
+      setIsLoading(true);
+      try {
+        const req = await fetch(`${API_ENDPOINT_BASE}/${name}`); 
+        if (!req.ok) {
+          throw new Error('Cound not find this pokemon');
+        }
+        const data = await req.json();
+        setPokemon({
+          id: data?.id,
+          name: data?.name,
+          thumbnail: data?.sprites?.front_default,
+          image: data?.sprites?.other?.['official-artwork']?.front_default,
+          order: data?.order,
+          types: data?.types,
+          stats: data?.stats
+        });
+
+        setIsError(false);
+        
+      } catch (err) {
+        setIsError(true);
+        setPokemon(null);
+        console.error('error happen');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
     fetchPokemon(selectedPokemonName);
   }, [selectedPokemonName]);
 
@@ -62,31 +92,7 @@ const PokemonProvider = ({ children }) => {
   }, [currPageUrl]);
 
 
-  const fetchPokemon = async (name) => {
-    setIsError(false);
 
-    try {
-      const req = await fetch(`${API_ENDPOINT_BASE}/${name}`); 
-      if (!req.ok) {
-        throw new Error('Cound not find this pokemon');
-      }
-      const data = await req.json();
-      setPokemon({
-        id: data?.id,
-        name: data?.name,
-        thumbnail: data?.sprites?.front_default,
-        image: data?.sprites?.other?.['official-artwork']?.front_default,
-        order: data?.order,
-        types: data?.types,
-        stats: data?.stats
-      });
-      
-    } catch (err) {
-      setIsError(true);
-      setPokemon(null);
-      console.error('error happen');
-    }
-  };
 
   const handlePokemonSearch = (name) => {
     if (!name || name.trim() === '') {
@@ -145,6 +151,7 @@ const PokemonProvider = ({ children }) => {
   };
 
   const value = {
+    isLoading,
     isError,
     pokemon,
     selectedPokemonName,

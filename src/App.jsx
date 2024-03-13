@@ -15,13 +15,15 @@ const App = () => {
 
   if (isMobile) {
     return (
-      <PokemonProvider>
-        <Container className='d-flex flex-column justify-content-center my-3 vh-100'>
-          <PokemonSearchBar />
-          <PokemonCard />
-          <PokemonCapturedList />
-        </Container>
-      </PokemonProvider>
+      <ViewportProvider>
+        <PokemonProvider>
+          <Container className='d-flex flex-column justify-content-center my-3 vh-100'>
+            <PokemonSearchBar />
+            <PokemonCard />
+            <PokemonCapturedList />
+          </Container>
+        </PokemonProvider>
+      </ViewportProvider>
     )
   }
 
