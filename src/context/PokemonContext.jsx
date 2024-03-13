@@ -1,8 +1,10 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-const API_ENDPOINT_BASE = 'https://pokeapi.co/api/v2/pokemon';
+const API_ENDPOINT_BASE_URL = 'https://pokeapi.co/api/v2/pokemon';
 const MAX_CAPTURED_POKEMONS_NUM = 5;
+const DEFAULT_POKEMON_NAME = 'bulbasaur';
+
 const PokemonContext = createContext(null);
 
 const usePokemonContext = () => {
@@ -15,11 +17,11 @@ const usePokemonContext = () => {
 }
 
 const PokemonProvider = ({ children }) => {
-  const [pokemonNames, setPokemonNames] = useState([]);
-  const [currPageUrl, setCurrPageUrl] = useState(API_ENDPOINT_BASE);
+  const [pokemonNavNames, setPokemonNavNames] = useState([]);
+  const [selectedPokemonName, setSelectedPokemonName] = useState(DEFAULT_POKEMON_NAME);
+  const [currPageUrl, setCurrPageUrl] = useState(API_ENDPOINT_BASE_URL);
   const [prevPageUrl, setPrevPageUrl] = useState('');
   const [nextPageUrl, setNextPageUrl] = useState('');
-  const [selectedPokemonName, setSelectedPokemonName] = useState('bulbasaur');
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [pokemon, setPokemon] = useState(null);
@@ -32,7 +34,7 @@ const PokemonProvider = ({ children }) => {
     const fetchPokemon = async (name) => {
       setIsLoading(true);
       try {
-        const req = await fetch(`${API_ENDPOINT_BASE}/${name}`); 
+        const req = await fetch(`${API_ENDPOINT_BASE_URL}/${name}`); 
         if (!req.ok) {
           throw new Error('Cound not find this pokemon');
         }
@@ -71,7 +73,7 @@ const PokemonProvider = ({ children }) => {
           throw new Error('Invalid HTTP Status Code');
         }
         const data = await res.json();
-        setPokemonNames(data?.results.map((result) => result.name));
+        setPokemonNavNames(data?.results.map((result) => result.name));
         setPrevPageUrl(data?.previous);
         setNextPageUrl(data?.next);
   
@@ -155,7 +157,7 @@ const PokemonProvider = ({ children }) => {
     isError,
     pokemon,
     selectedPokemonName,
-    pokemonNames,
+    pokemonNavNames,
     prevPageUrl,
     nextPageUrl,
     capturedPokemons,

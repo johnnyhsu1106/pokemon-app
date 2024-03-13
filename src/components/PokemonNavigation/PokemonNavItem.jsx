@@ -2,7 +2,7 @@ import { Button } from 'react-bootstrap';
 import { usePokemonContext } from '../../context/PokemonContext';
 
 
-const PokemonNavItem = ({ pokemonName }) => {
+const PokemonNavItem = ({ pokemonNavName }) => {
   const { 
     selectedPokemonName,
     handlePokemonSelect 
@@ -11,10 +11,10 @@ const PokemonNavItem = ({ pokemonName }) => {
   return (
     <Button
       variant='outline-light'
-      className= {`mt-1 pokeomn-nav-item text-capitalize ${pokemonName === selectedPokemonName ? 'selected' : ''}`}
-      onClick={() => { handlePokemonSelect(pokemonName)}}
+      className= {`mt-1 pokeomn-nav-item text-capitalize ${pokemonNavName === selectedPokemonName ? 'selected' : ''}`}
+      onClick={() => { handlePokemonSelect(pokemonNavName)}}
     >
-      {pokemonName}
+      {pokemonNavName}
     </Button>
   )
 }

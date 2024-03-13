@@ -3,16 +3,16 @@ import PokemonNavItem from './PokemonNavItem'
 import { usePokemonContext } from '../../context/PokemonContext';
 
 
-const pokemonNames = () => {
-  const { pokemonNames } = usePokemonContext();
+const PokemonNavList = () => {
+  const { pokemonNavNames } = usePokemonContext();
 
   return (
     <ButtonGroup vertical size='sm'
       className='mb-3'
     >
-      {pokemonNames.map((pokemonName) => {
+      {pokemonNavNames.map((pokemonNavName) => {
         return (
-          <PokemonNavItem key={pokemonName} pokemonName={pokemonName}/>
+          <PokemonNavItem key={pokemonNavName} pokemonNavName={pokemonNavName}/>
         );
       })}
     </ButtonGroup>
@@ -20,4 +20,4 @@ const pokemonNames = () => {
   )
 };
 
-export default pokemonNames;
+export default PokemonNavList;

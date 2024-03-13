@@ -1,18 +1,25 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Button, Form, Row } from 'react-bootstrap';
 import { usePokemonContext } from '../../context/PokemonContext';
 
 
 const PokemonSearchBar = () => {
   const { handlePokemonSearch } = usePokemonContext();
+  const [ query, SetQuery ] = useState('');
   const inputRef = useRef(null);
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
 
   const handleSearchButtonClick = (e) => {
     e.preventDefault();
-    handlePokemonSearch(inputRef.current?.value || '');
-    if (inputRef.current) {
-      inputRef.current.value = '';
-    }
+    handlePokemonSearch(query);
+    SetQuery('');
+  };
+  
+  const handleSearchInputChange = (inputQuery) => {
+    SetQuery(inputQuery);
   };
 
   return (
@@ -30,6 +37,8 @@ const PokemonSearchBar = () => {
             placeholder='Pokemon Name or ID'
             aria-label='Pokemon Name or ID'
             ref={inputRef}
+            value={query}
+            onChange={(e) => {handleSearchInputChange(e.target.value)}}
             required
           
           />      
