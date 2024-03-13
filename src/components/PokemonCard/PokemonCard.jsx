@@ -11,18 +11,19 @@ const PokemonCard = () => {
     isError,
     isCaptureButtonDisabled,
     pokemon,
+    selectedPokemonName,
     handlePokemonCapture
   } = usePokemonContext();
   const { isMobile } = useViewportContext();
   
   if (isLoading) {
     return (
-      <p className='text-center pokemon-card'>Search for pokemon...</p>
+      <p className='text-center pokemon-card'>Search for pokemon {selectedPokemonName} ...</p>
     )
   };
   if (isError) {
     return (
-      <p className='text-center pokemon-card'>Couldn't find this Pokemon</p>
+      <p className='text-center pokemon-card'>Couldn't find this Pokemon {selectedPokemonName}</p>
     ) 
   };
 
