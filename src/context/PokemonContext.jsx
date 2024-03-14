@@ -31,6 +31,7 @@ const PokemonProvider = ({ children }) => {
   const isCaptureButtonDisabled = capturedPokemons.length >= MAX_CAPTURED_POKEMONS_NUM || isError;
 
   useEffect(() => {
+    const controller = new AbortController();
     const fetchPokemon = async (name) => {
       setIsLoading(true);
       try {
@@ -52,6 +53,9 @@ const PokemonProvider = ({ children }) => {
         setIsError(false);
         
       } catch (err) {
+        if (err.name === 'AbortError') {
+          return;
+        }
         setIsError(true);
         setPokemon(null);
         console.error('error happen');
@@ -61,6 +65,10 @@ const PokemonProvider = ({ children }) => {
     };
 
     fetchPokemon(selectedPokemonName);
+
+    return () => {
+      controller.abort();
+    };
   }, [selectedPokemonName]);
 
 
