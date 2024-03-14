@@ -1,6 +1,6 @@
 import { Button } from 'react-bootstrap';
 
-const NavButton = ({
+const PokemonNavButton = ({
   children,
   onClick
 }) => {
@@ -11,4 +11,4 @@ const NavButton = ({
   )
 }
 
-export default NavButton;
+export default PokemonNavButton;

@@ -1,5 +1,5 @@
 import { Stack } from 'react-bootstrap';
-import NavButton from './PokemonNavButton';
+import PokemonNavButton from './PokemonNavButton';
 import { usePokemonContext } from '../../context/PokemonContext'
 
 const PokemonNavButtons = () => {
@@ -11,8 +11,8 @@ const PokemonNavButtons = () => {
   } = usePokemonContext();
   return (
     <Stack className='d-flex justify-content-between' direction='horizontal'>
-      {prevPageUrl ? < NavButton onClick={handlePrevButtonClick}>Prev</NavButton> : null}  
-      {nextPageUrl ?  <NavButton onClick={handleNextButtonClick}>Next</NavButton> : null}
+      {prevPageUrl ? <PokemonNavButton onClick={handlePrevButtonClick}>Prev</PokemonNavButton> : null}  
+      {nextPageUrl ? <PokemonNavButton onClick={handleNextButtonClick}>Next</PokemonNavButton> : null}
     </Stack>  
     )
 }
