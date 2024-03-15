@@ -1,6 +1,4 @@
 import { Row, Col, Container } from 'react-bootstrap';
-import { ViewportProvider } from './context/ViewportContext';
-import { PokemonProvider } from './context/PokemonContext';
 import PokemonSearchBar from './components/PokemonSearchBar/PokemonSearchBar';
 import PokemonNavigation from './components/PokemonNavigation/PokemonNavigation';
 import PokemonCard from './components/PokemonCard/PokemonCard';
