@@ -5,7 +5,7 @@ const ViewportContext = createContext(null);
 
 const useViewportContext = () => {
   const viewportContext = useContext(ViewportContext);
-
+  
   if (viewportContext === null) {
     throw new Error('useViewportContext must be used within ViewportProvider');
   }
