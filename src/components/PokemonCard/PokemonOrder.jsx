@@ -1,3 +1,6 @@
+import PropTypes from 'prop-types';
+
+
 const PokemonOrder = ({ order }) => {
   if (!order) {
     return null;
@@ -7,5 +10,9 @@ const PokemonOrder = ({ order }) => {
     <p>Order: {order}</p>
   );
 }
+
+PokemonOrder.propTypes = {
+  order: PropTypes.number.isRequired
+};
 
 export default PokemonOrder;

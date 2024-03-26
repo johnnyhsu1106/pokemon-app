@@ -1,6 +1,7 @@
 import { Stack } from 'react-bootstrap';
 import PokemonNavButton from './PokemonNavButton';
 import { usePokemonContext } from '../../context/PokemonContext'
+import PropTypes from 'prop-types';
 
 const PokemonNavButtons = () => {
   const {
@@ -15,6 +16,7 @@ const PokemonNavButtons = () => {
       {nextPageUrl ? <PokemonNavButton onClick={handleNextButtonClick}>Next</PokemonNavButton> : null}
     </Stack>  
     )
-}
+};
+
 
 export default PokemonNavButtons;

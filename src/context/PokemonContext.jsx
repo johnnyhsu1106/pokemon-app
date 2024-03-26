@@ -1,5 +1,7 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import PropTypes from 'prop-types';
+
 
 const API_ENDPOINT_BASE_URL = 'https://pokeapi.co/api/v2/pokemon';
 const MAX_CAPTURED_POKEMONS_NUM = 5;
@@ -17,14 +19,15 @@ const usePokemonContext = () => {
 }
 
 const PokemonProvider = ({ children }) => {
-  const [pokemonNavNames, setPokemonNavNames] = useState([]);
+  const [pokemon, setPokemon] = useState({}); // pokemon is the selected pokemon
   const [selectedPokemonName, setSelectedPokemonName] = useState(DEFAULT_POKEMON_NAME);
+  const [pokemonNavNames, setPokemonNavNames] = useState([]);
   const [currPageUrl, setCurrPageUrl] = useState(API_ENDPOINT_BASE_URL);
   const [prevPageUrl, setPrevPageUrl] = useState('');
   const [nextPageUrl, setNextPageUrl] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-  const [pokemon, setPokemon] = useState(null);
+
 
   const [capturedPokemons, setCapturedPokemons] = useState([]);
 
@@ -34,6 +37,7 @@ const PokemonProvider = ({ children }) => {
     const controller = new AbortController();
     const fetchPokemon = async (name) => {
       setIsLoading(true);
+      setIsError(false);
       try {
         const req = await fetch(`${API_ENDPOINT_BASE_URL}/${name}`); 
         if (!req.ok) {
@@ -57,7 +61,7 @@ const PokemonProvider = ({ children }) => {
           return;
         }
         setIsError(true);
-        setPokemon(null);
+        setPokemon({});
         console.error('error happen');
       } finally {
         setIsLoading(false);
@@ -135,16 +139,8 @@ const PokemonProvider = ({ children }) => {
   };
 
 
-  const handlePokemonInspect = (id) => {
-    const capturedPokemon = capturedPokemons.find((capturedPokemon) => {
-      return capturedPokemon.id === id;
-    });
-
-    if (!capturedPokemon) {
-      return;
-    }
-    const {capturedId, ...pokemon} = capturedPokemon
-    setPokemon(pokemon);
+  const handlePokemonInspect = (name) => {
+    setSelectedPokemonName(name)
     setIsError(false);
   };
   
@@ -186,6 +182,10 @@ const PokemonProvider = ({ children }) => {
       {children}
     </PokemonContext.Provider>
   )
-}
+};
+
+PokemonProvider.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
+};
 
 export { usePokemonContext, PokemonProvider}

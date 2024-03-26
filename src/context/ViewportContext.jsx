@@ -1,4 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react'
+import PropTypes from 'prop-types';
+
 
 const BREAKPOINT = 980;
 const ViewportContext = createContext(null);
@@ -37,6 +39,10 @@ const ViewportProvider = ({ children }) => {
       {children}
     </ViewportContext.Provider>
   )
-}
+};
+
+ViewportProvider.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
+};
 
 export { useViewportContext, ViewportProvider };

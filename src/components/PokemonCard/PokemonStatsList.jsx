@@ -1,7 +1,7 @@
 import { Stack } from 'react-bootstrap';
 import PokemonStats from './PokemonStats';
-import { usePokemonContext } from '../../context/PokemonContext';
 import { useViewportContext } from '../../context/ViewportContext';
+import PropTypes from 'prop-types';
 
 
 const STATS_NAMES = [
@@ -36,6 +36,10 @@ const PokemonStatsList = ({ stats }) => {
     }
     </Stack>
   )
-}
+};
+
+PokemonStatsList.propTypes = {
+  stats: PropTypes.array.isRequired
+};
 
 export default PokemonStatsList;

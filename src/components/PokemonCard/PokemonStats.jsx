@@ -1,5 +1,5 @@
 import { Badge, Stack } from 'react-bootstrap';
-
+import PropTypes from 'prop-types';
 
 const PokemonStats = ({
   name, 
@@ -13,5 +13,10 @@ const PokemonStats = ({
     </Stack>
   )
 }
+
+PokemonStats.propTypes = {
+  name: PropTypes.string.isRequired,
+  baseStats: PropTypes.number.isRequired
+};
 
 export default PokemonStats;

@@ -1,8 +1,10 @@
 import { Stack } from 'react-bootstrap';
 import PokemonType from './PokemonType';
+import PropTypes from 'prop-types';
+
 
 const PokemonTypes = ({ types }) => {
-  if (!types) {
+  if (!types || types.length === 0) {
     return null;
   }
 
@@ -21,6 +23,10 @@ const PokemonTypes = ({ types }) => {
       })}
     </Stack>
   )
-}
+};
+
+PokemonTypes.propTypes = {
+  types: PropTypes.array.isRequired
+};
 
 export default PokemonTypes
