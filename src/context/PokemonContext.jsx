@@ -139,7 +139,7 @@ const PokemonProvider = ({ children }) => {
     setSelectedPokemonName(name)
   };
   
-  const handlePokemonRemove = (capturedId) => {
+  const handleCapturedPokemonRemove = (capturedId) => {
     setCapturedPokemons((prevCapturedPokemons) => {
       return prevCapturedPokemons.filter((prevCapturedPokemon) => {
         return prevCapturedPokemon.capturedId !== capturedId;
@@ -168,7 +168,7 @@ const PokemonProvider = ({ children }) => {
     handleNextButtonClick,
     handlePokemonCapture,
     handlePokemonInspect,
-    handlePokemonRemove,
+    handleCapturedPokemonRemove,
     handlePokemonsClear
   };
 

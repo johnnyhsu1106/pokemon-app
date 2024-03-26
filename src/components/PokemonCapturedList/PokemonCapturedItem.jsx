@@ -4,9 +4,9 @@ import { useViewportContext } from '../../context/ViewportContext';
 import PropType from 'prop-types';
 
 
-const PokemonCapturedItem = ({ capturedPokemon} ) => {
+const PokemonCapturedItem = ({ capturedPokemon } ) => {
   const { 
-    handlePokemonRemove,
+    handleCapturedPokemonRemove,
     handlePokemonInspect
    } = usePokemonContext();
 
@@ -26,7 +26,7 @@ const PokemonCapturedItem = ({ capturedPokemon} ) => {
       />
       {!isMobile && <Card.Text className='mb-1 text-capitalize'>{name}</Card.Text>}
       <button
-        onClick={() => handlePokemonRemove(capturedId)}  
+        onClick={() => handleCapturedPokemonRemove(capturedId)}  
         className='delete-btn'
       >
         &times;
