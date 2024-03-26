@@ -40,7 +40,7 @@ const PokemonCard = () => {
             className={`w-100 ${isMobile ? 'mt-0' : 'mt-4'}`}
             variant={`${isCaptureButtonDisabled ? 'light' : 'success'}`}
             disabled={isCaptureButtonDisabled}
-            onClick={isCaptureButtonDisabled ? () => {} : handlePokemonCapture} 
+            onClick={isCaptureButtonDisabled ? () => {} :  () => { handlePokemonCapture(pokemon) }} 
           >
             {isCaptureButtonDisabled ? 'Pocket is full' : 'Capture'}
           </Button>

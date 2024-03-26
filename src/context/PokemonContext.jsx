@@ -27,8 +27,6 @@ const PokemonProvider = ({ children }) => {
   const [nextPageUrl, setNextPageUrl] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
-
-
   const [capturedPokemons, setCapturedPokemons] = useState([]);
 
   const isCaptureButtonDisabled = capturedPokemons.length >= MAX_CAPTURED_POKEMONS_NUM || isError;
@@ -106,8 +104,6 @@ const PokemonProvider = ({ children }) => {
   }, [currPageUrl]);
 
 
-
-
   const handlePokemonSearch = (name) => {
     if (!name || name.trim() === '') {
       return;
@@ -128,11 +124,11 @@ const PokemonProvider = ({ children }) => {
     setCurrPageUrl(nextPageUrl);
   };
 
-  const handlePokemonCapture = () => {
+  const handlePokemonCapture = (pokemon) => {
     if (capturedPokemons.length > MAX_CAPTURED_POKEMONS_NUM) {
       return;
     }
-
+``
     setCapturedPokemons((prevCapturedPokemons) => {
       return [...prevCapturedPokemons, {...pokemon, capturedId: uuidv4() }];
     });
@@ -141,7 +137,6 @@ const PokemonProvider = ({ children }) => {
 
   const handlePokemonInspect = (name) => {
     setSelectedPokemonName(name)
-    setIsError(false);
   };
   
   const handlePokemonRemove = (capturedId) => {
