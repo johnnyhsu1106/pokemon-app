@@ -24,7 +24,7 @@ const PokemonCapturedItem = ({ capturedPokemon } ) => {
         src={thumbnail}
         onClick={() => handlePokemonInspect(name)}
       />
-      {!isMobile && <Card.Text className='mb-1 text-capitalize'>{name}</Card.Text>}
+      {!isMobile ? <Card.Text className='mb-1 text-capitalize'>{name}</Card.Text> : null}
       <button
         onClick={() => handleCapturedPokemonRemove(capturedId)}  
         className='delete-btn'
